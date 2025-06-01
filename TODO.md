@@ -31,3 +31,12 @@
 
 - Add units selection with mouse frame,
 - Add groups bindings,
+
+## Textures
+
+- Load spritesheet only once per action,
+
+## Lua
+
+- Add lua support,
+- Add script engine for user code execution,
