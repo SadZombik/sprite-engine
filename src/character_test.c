@@ -15,24 +15,28 @@ static struct sz_sprite_config sprite_configs[] = {
         .width = SPRITE_WIDTH,
         .height = SPRITE_HEIGHT,
         .total_time = 1.0f,
+        .type = SZ_ACTION_IDLE,
     },
     {
         .path = "./res/dark-oracle/Actions/Running",
         .width = SPRITE_WIDTH,
         .height = SPRITE_HEIGHT,
         .total_time = 1.0f,
+        .type = SZ_ACTION_RUN,
     },
     {
         .path = "./res/dark-oracle/Actions/Slashing",
         .width = SPRITE_WIDTH,
         .height = SPRITE_HEIGHT,
         .total_time = 0.5f,
+        .type = SZ_ACTION_ATTACK_0,
     },
     {
         .path = "./res/dark-oracle/Actions/Dying",
         .width = SPRITE_WIDTH,
         .height = SPRITE_HEIGHT,
         .total_time = 1.0f,
+        .type = SZ_ACTION_DYING,
     }
 };
 

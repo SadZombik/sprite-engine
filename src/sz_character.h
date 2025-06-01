@@ -4,7 +4,6 @@
 #include "sz_sprite.h"
 
 #define SZ_CHARACTER_NAME_MAX 32
-#define SZ_CHARACTER_ACTIONS_MAX 32
 
 struct sz_character;
 

@@ -9,6 +9,8 @@
 #include <string.h>
 #include <malloc.h>
 
+#include "sz_action.h"
+
 #define SZ_SPRITE_MAX_ACTION_FRAMES 32
 
 struct sz_sprite {
@@ -31,10 +33,11 @@ struct sz_sprite_dir {
 };
 
 struct sz_sprite_config {
-    const char *path;   /* Path to the sprite sheet */
-    float width;        /* Width of each frame */
-    float height;       /* Height of each frame */
-    float total_time;   /* Total time for the animation */
+    const char *path;           /* Path to the sprite sheet */
+    float width;                /* Width of each frame */
+    float height;               /* Height of each frame */
+    float total_time;           /* Total time for the animation */
+    enum sz_action_type type;   /* Type of action this sprite represents */
 };
 
 int sz_sprite_load(const struct sz_sprite_config *config, struct sz_sprite *sprite);
