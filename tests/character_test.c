@@ -1,5 +1,5 @@
-#include "sz_character.h"
-#include "sz_app.h"
+#include <sz_character.h>
+#include <sz_app.h>
 
 #include <stdio.h>
 

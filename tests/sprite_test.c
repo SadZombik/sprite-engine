@@ -1,5 +1,5 @@
-#include "sz_sprite.h"
-#include "sz_app.h"
+#include <sz_sprite.h>
+#include <sz_app.h>
 
 #include <stdio.h>
 #include <stdlib.h>

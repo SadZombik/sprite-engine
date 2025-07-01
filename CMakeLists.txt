@@ -5,11 +5,14 @@ project(sprite-engine)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED True)
 
-add_subdirectory(dependencies/raylib)
 
 if (WIN32)
-    add_definitions(-D_CRT_SECURE_NO_WARNINGS)
+add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 endif()
+
+# Dependencies
+add_subdirectory(dependencies/raylib)
+add_subdirectory(dependencies/lua)
 
 # lib
 add_library(sprite-engine-lib
@@ -17,21 +20,34 @@ add_library(sprite-engine-lib
     src/sz_character.c
     src/sz_app.c
 )
-target_link_libraries(sprite-engine-lib raylib)
+target_link_libraries(sprite-engine-lib PUBLIC raylib)
+target_link_libraries(sprite-engine-lib PUBLIC lua_library)
 
-# test sprites
-add_executable(sprite-test
-    src/sprite_test.c
+# tests
+set(tests_targets
+	sprite_test
+    character_test
 )
 
-target_link_libraries(sprite-test sprite-engine-lib)
+foreach(target ${tests_targets})
+	file(GLOB SOURCES tests/${target}.c)
+	foreach(SOURCE ${SOURCES})
+		get_filename_component(FILENAME ${SOURCE} NAME_WE)
+        message(STATUS "Adding test target: ${FILENAME}")
+		add_executable(${FILENAME} ${SOURCE})
 
-# test character
-add_executable(character-test
-    src/character_test.c
+		target_include_directories(${FILENAME} PRIVATE src/)
+		target_link_libraries(${FILENAME} sprite-engine-lib)
+	endforeach()
+endforeach()
+
+# lua test
+add_executable(lua_test
+	tests/lua_test.c
 )
 
-target_link_libraries(character-test sprite-engine-lib)
+target_include_directories(lua_test PRIVATE dependencies/lua/src)
+target_link_libraries(lua_test lua_library)
 
 # helper for generating sprite sheets
 add_executable(generate-sprite-sheet
@@ -40,5 +56,3 @@ add_executable(generate-sprite-sheet
 )
 
 target_link_libraries(generate-sprite-sheet raylib)
-
-

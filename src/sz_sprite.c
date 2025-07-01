@@ -71,8 +71,7 @@ void sz_sprite_update(struct sz_sprite *sprite) {
 
     sprite->elapsed += dt;
     if (sprite->elapsed >= sprite->frame_time) {
-        sprite->current_frame++;
-        if (sprite->current_frame >= sprite->n_frames)
+        if (++sprite->current_frame >= sprite->n_frames)
             sprite->current_frame = 0;
 
         sprite->elapsed = 0.0f;
